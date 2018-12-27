@@ -285,7 +285,7 @@ export default {
 * 在按钮点击事件里，我们将触发 getRandom 方法去得到一个数值
 
 
-## 用 axios 库来连接后端
+## vue 用 axios 库来连接后端
 axios 将允许我们创建能返回 Promise 对象的 HTTP 请求.
 
 #### 1. axios 安装
@@ -296,7 +296,104 @@ npm install --save axios
 #### 2. vuejs 调用 axios
 再次打开 Home.uve，修改 **\<script>** 部分代码：
 ```html
+<template>
+  <div>
+    <p>Home page</p>
+    <p>Random number from backend: {{ randomNumber }}</p>
+    <button @click="getRandom">New random number</button>
+  </div>
+</template>
 
+<script>
+import axios from 'axios'
+
+export default {
+  data () {
+    return {
+      randomNumber: 0
+    }
+  },
+  methods: {
+    getRandom () {
+      // this.randomNumber = this.getRandomInt(1, 100)
+      this.randomNumber = this.getRandomFromBackend()
+    },
+    getRandomFromBackend () {
+      const path = 'http://localhost:5000/api/random'
+      axios.get(path)
+        .then(response => {
+          this.randomNumber = response.data.randomNumber
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  },
+  created () {
+    this.getRandom()
+  }
+}
+</script>
+```
+详解：
+* 首先导入 axios 库
+* 用 axios 去异步调用新方法 getRandonFromBackend 接收返回的结果
+* 最后， getRandom 方法调用 getRandomFromBackend 去获取随机值
+
+注意：<br>
+Flask 后台 API 默认不对其他的域名和端口（例子运行的是 Vue.js 应用）开放。当你首先执行 npm run build 生成包，然后打开 localhost:5000（Flask 服务）就可以解决问题。
+
+
+## Flask 的 CORS 插件为访问 API 创建规则
+
+#### 1. flask-cors 安装
+```bash
+(venv) pip install -U flask-cors
+```
+
+#### 2. flask 添加 CORS 插件
+```python
+from flask import Flask, render_template, jsonify
+from random import *
+from flask_cors import CORS
+
+app = Flask(__name__,
+            static_folder = "../dist/static",
+            template_folder = "../dist")
+cors = CORS(app, resources={"/api/*": {"origins": "*"}})
+
+
+@app.route('/api/random')
+def random_number():
+    response = {
+        'randomNumber': randint(1, 100)
+    }
+    return jsonify(response)
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return render_template("index.html")
+
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run()
+```
+用资源指定的方法应用 {"origins": "*"} 去允许所有 /api/* 下的路由（所以任何人都可以访问 /api 接口）。 <br>
+**现在可以从前端的开发环境调用 Flask API 接口了！！**
+
+## 程序启动
+* 后台启动：
+```bash
+cd frontend
+npm run build
+cd backend
+python run.py
+```
+* 网页：
+```bash
+http://127.0.0.1:5000/
 ```
 
 
