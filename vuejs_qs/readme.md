@@ -41,7 +41,54 @@
 </body>
 </html>
 ```
+code link: [helloworld.html](./helloworld.html)
+
 注意事项：
 * el - DOM元素绑定
 * data 对象
 * $data - vue成员对象引用
+
+## TodoList Project
+Contents:
+* list object - vue 列表数据
+* v-for="item in list" - 列表遍历
+* v-on:[event]="functionName" - 事件绑定
+* methods - vue 函数成员
+* v-model="inputValue" - 数据的双向绑定
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="inputValue">
+    <button v-on:click="handleBtnClick">提交</button>
+    <ul>
+        <li v-for="item in list">{{item}}</li>
+    </ul>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            list: ["item 1", "item 2"],
+            inputValue: ""
+        },
+        methods: {
+            handleBtnClick: function() {
+                this.list.push(this.inputValue);
+                //alert(this.inputValue)
+                this.inputValue = "";
+            }
+        }
+    })
+</script>
+</body>
+</html>
+```
+code link: [practices/TodoList.html](./practices/TodoList.html)
+
