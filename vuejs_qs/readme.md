@@ -92,3 +92,69 @@ Contents:
 ```
 code link: [practices/TodoList.html](./practices/TodoList.html)
 
+## VueJS - MVVM 模式
+* MVP 模式 - 面向 DOM 进行开发
+
+    *Model(数据层)、View(视图层/DOM展示)、Presenter(业务逻辑/控制层)*
+
+    [TodoList Jquery](./practices/TodoList_Jquery.html)
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    </head>
+    <body>
+    <!--视图-->
+    <div id="app">
+        <input id="input" type="text" >
+        <button id="btn">提交</button>
+        <ul id="list">
+            <li>item 1</li>
+        </ul>
+    </div>
+    <script>
+        // MVP模式： M 模型层（Ajax请求） V 视图 P 控制器
+        function Page() {
+
+        }
+
+        $.extend(Page.prototype, {
+            init: function() {
+                this.bindEvents()
+            },
+            bindEvents: function() {
+                var btn = $("#btn");
+                btn.on("click", $.proxy(this.handleBtnClick, this))
+            },
+            handleBtnClick: function() {
+                //alert("123");
+                var inputElem = $("#input");
+                var inputValue = inputElem.val();
+                var ulElem = $("#list");
+                ulElem.append("<li>" + inputValue + "</li>");
+                inputElem.val("");
+            }
+        })
+
+        var page = new Page();
+        page.init();
+    </script>
+    </body>
+    </html>
+    ```
+    *$ 是 JQuery 常用的一个回传函数，定义为 "选取". 英文是 selector 的缩写*
+
+    ***MVP 模式中，Presenter（控制） 层是编码核心，Model层为边缘层***
+    <img src="./pics/MVP.jpg" width="30%">
+
+* MVVM 模式 - 面向数据进行编程
+
+    [TodoList Vue](./practices/TodoList.html)
+    ```html
+    refer to TodoList Project
+    ```
+    ***MVVM 模式中, VM 层为 Vue 内置，编码重点一部分在视图层，一部分在模型层***
+    <img src="./pics/MVVM.jpg" width="30%">
