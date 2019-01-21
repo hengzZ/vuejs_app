@@ -147,8 +147,10 @@ code link: [practices/TodoList.html](./practices/TodoList.html)
     ```
     *$ 是 JQuery 常用的一个回传函数，定义为 "选取". 英文是 selector 的缩写*
 
+    <div align="center">
     ***MVP 模式中，Presenter（控制） 层是编码核心，Model层为边缘层*** <br>
-    <div align="center"><img src="./pics/MVP.jpg" width="45%"></div>
+    <img src="./pics/MVP.jpg" width="45%">
+    </div>
 
 * MVVM 模式 - 面向数据进行编程
 
@@ -156,5 +158,8 @@ code link: [practices/TodoList.html](./practices/TodoList.html)
     ```html
     # refer to TodoList Project
     ```
+
+    <div align="center">
     ***MVVM 模式中, VM 层为 Vue 内置，编码重点一部分在视图层，一部分在模型层*** <br>
-    <div align="center"><img src="./pics/MVVM.jpg" width="45%"></div>
+    <img src="./pics/MVVM.jpg" width="45%">
+    </div>
