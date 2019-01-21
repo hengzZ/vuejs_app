@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <input id="input" type="text" >
+    <button id="btn">提交</button>
+    <ul id="list">
+        <li>item 1</li>
+    </ul>
+</div>
+<script>
+    function Page() {
+
+    }
+
+    $.extend(Page.prototype, {
+        init: function() {
+            this.bindEvents()
+        },
+        bindEvents: function() {
+            var btn = $("#btn");
+            btn.on("click", $.proxy(this.handleBtnClick, this))
+        },
+        handleBtnClick: function() {
+            //alert("123");
+            var inputElem = $("#input");
+            var inputValue = inputElem.val();
+            var ulElem = $("#list");
+            ulElem.append("<li>" + inputValue + "</li>");
+            inputElem.val("");
+        }
+    })
+
+    var page = new Page();
+    page.init();
+</script>
+</body>
+</html>
