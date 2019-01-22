@@ -171,9 +171,11 @@ code link: [practices/TodoList.html](./practices/TodoList.html)
 *以组件组合方式搭建页面*
 
 #### 1. 使用组件改造 TodoList 网页
-    * 组件定义 （全局/局部方式）
-    * v-bind
-    * props
+
+* 组件定义 （全局/局部方式）
+* v-bind
+* props
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -233,17 +235,18 @@ code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Comp
 
 #### 2. 组件间传值
 
-    父组件 - Vue 实例绑定的元素 <br>
-    子组件 - TodoItem
+***父组件 - Vue 实例绑定的元素 <br>***
+***子组件 - TodoItem***
 
-    * 父组件 -> 子组件传值
+* 父组件 -> 子组件传值
     ```
     # v-bind (简写为:) + props
     ```
-    * 子组件 -> 父组件传值
+* 子组件 -> 父组件传值
     ```
     # $emit （发射/引发事件 + 参数） + v-on （监听事件，简写为@）
-
+    ```
+    ```html
     <!DOCTYPE html>
     <html lang="en">
     <head>
