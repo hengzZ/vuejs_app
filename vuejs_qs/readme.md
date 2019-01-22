@@ -48,7 +48,8 @@ code link: [helloworld.html](./helloworld.html)
 * data 对象
 * $data - vue成员对象引用
 
-## TodoList Project
+
+## Vue - A TodoList Project
 Contents:
 * list object - vue 列表数据
 * v-for="item in list" - 列表遍历
@@ -92,7 +93,8 @@ Contents:
 ```
 code link: [practices/TodoList.html](./practices/TodoList.html)
 
-## VueJS - MVVM 模式
+
+## Vue - MVVM 模式
 * MVP 模式 - 面向 DOM 进行开发
 
     *Model(数据层)、View(视图层/DOM展示)、Presenter(业务逻辑/控制层)*
@@ -163,3 +165,71 @@ code link: [practices/TodoList.html](./practices/TodoList.html)
     <b><i>MVVM 模式中, VM 层为 Vue 内置，编码重点一部分在视图层，一部分在模型层</i></b> <br>
     <img src="./pics/MVVM.jpg" width="45%">
     </div>
+
+
+## Vue - 前端组件化
+*以组件组合方式搭建页面*
+
+* 使用组件改造 TodoList 网页
+    * 组件定义 （全局/局部方式）
+    * v-bind
+    * props
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <div>
+        <input type="text" v-model="todoValue">
+        <button @click="handleBtnClick">提交</button>
+    </div>
+    <ul>
+        <!--<li v-for="item in list">{{item}}</li>-->
+        <todo-item v-bind:content="item"
+                   v-for="item in list">
+        </todo-item>
+    </ul>
+</div>
+<script>
+        // Vue 组件定义 (绑定传参)
+        // 全局组件
+        //Vue.component("TodoItem", {
+        //    props: ["content"],
+        //    template: "<li>{{content}}</li>"
+        //})
+        // 局部组件
+        var TodoItem = {
+            props: ["content"],
+            template: "<li>{{content}}</li>"
+        }
+
+        var app = new Vue({
+            el: "#root",
+            components: {
+				// 局部组件注册
+                TodoItem: TodoItem
+            },
+            data: {
+                list: ["item 1", "item 2"],
+                todoValue: ""
+            },
+            methods: {
+                handleBtnClick: function() {
+                    this.list.push(this.todoValue);
+                    this.todoValue = "";
+                }
+            }
+        })
+</script>
+</body>
+</html>
+```
+code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Component.html)
+
+* 组件间传值
+
