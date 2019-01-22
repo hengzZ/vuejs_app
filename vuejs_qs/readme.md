@@ -233,3 +233,81 @@ code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Comp
 
 * 组件间传值
 
+    父组件 - Vue 实例绑定的元素 <br>
+    子组件 - TodoItem
+
+    * 父组件 -> 子组件传值
+    ```
+    # v-bind (简写为:) + props
+    ```
+    * 子组件 -> 父组件传值
+    ```
+    # $emit （发射/引发事件 + 参数） + v-on （监听事件，简写为@）
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>TodoList</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+    <div id="root">
+        <div>
+            <input type="text" v-model="todoValue">
+            <button @click="handleBtnClick">提交</button>
+        </div>
+        <ul>
+            <!--<li v-for="item in list">{{item}}</li>-->
+            <todo-item v-bind:content="item"
+                       v-bind:index="index"
+                       v-for="(item,index) in list"
+                       @delete="handleItemDelete">
+            </todo-item>
+        </ul>
+    </div>
+    <script>
+            // Vue 组件定义 (绑定传参)
+            // 全局组件
+            //Vue.component("TodoItem", {
+            //    props: ["content"],
+            //    template: "<li>{{content}}</li>"
+            //})
+            // 局部组件
+            var TodoItem = {
+                props: ["content", "index"],
+                template: "<li @click='handleItemClick'>{{content}}</li>",
+                methods: {
+                    handleItemClick: function() {
+                        alert("click");
+                        this.$emit("delete", this.index);
+                    }
+                }
+            }
+
+            var app = new Vue({
+                el: "#root",
+                components: {
+                    // 局部组件注册
+                    TodoItem: TodoItem
+                },
+                data: {
+                    list: ["item 1", "item 2"],
+                    todoValue: ""
+                },
+                methods: {
+                    handleBtnClick: function() {
+                        this.list.push(this.todoValue);
+                        this.todoValue = "";
+                    },
+                    handleItemDelete: function(index) {
+                        //alert(index);
+                        this.list.splice(index, 1);
+                    }
+                }
+            })
+    </script>
+    </body>
+    </html>
+    ```
+    code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Component.html)
