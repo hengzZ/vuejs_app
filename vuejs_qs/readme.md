@@ -170,7 +170,7 @@ code link: [practices/TodoList.html](./practices/TodoList.html)
 ## Vue - 前端组件化
 *以组件组合方式搭建页面*
 
-* 使用组件改造 TodoList 网页
+#### 1. 使用组件改造 TodoList 网页
     * 组件定义 （全局/局部方式）
     * v-bind
     * props
@@ -231,7 +231,7 @@ code link: [practices/TodoList.html](./practices/TodoList.html)
 ```
 code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Component.html)
 
-* 组件间传值
+#### 2. 组件间传值
 
     父组件 - Vue 实例绑定的元素 <br>
     子组件 - TodoItem
@@ -311,3 +311,6 @@ code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Comp
     </html>
     ```
     code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Component.html)
+
+##### 总结
+至此，简单介绍了 Vue 核心最基本的功能。请详细阅读教程 https://cn.vuejs.org/v2/guide 的介绍部分。
