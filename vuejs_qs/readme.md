@@ -1,6 +1,9 @@
 # VueJS Quick Start
 官方教程，请参考：https://cn.vuejs.org/v2/guide
 
+###### Vue.js 的核心是一个允许采用简洁的模板语法来声明式地将数据渲染进 DOM 的系统
+
+
 ## Your First Vue
 ```html
 <!doctype html>
@@ -56,6 +59,10 @@ Contents:
 * v-on:[event]="functionName" - 事件绑定
 * methods - vue 函数成员
 * v-model="inputValue" - 数据的双向绑定
+
+###### v-on 指令添加一个事件监听器是实现用户交互的重要手段
+###### v-model 指令，轻松实现表单输入和应用状态之间的双向绑定
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -170,11 +177,16 @@ code link: [practices/TodoList.html](./practices/TodoList.html)
 ## Vue - 前端组件化
 *以组件组合方式搭建页面*
 
+###### 组件系统是 Vue 的另一个重要概念，因为它是一种抽象，允许我们使用小型、独立和通常可复用的组件构建大型应用。仔细想想，几乎任意类型的应用界面都可以抽象为一个组件树。
+
 #### 1. 使用组件改造 TodoList 网页
 
 * 组件定义 （全局/局部方式）
 * v-bind
 * props
+
+###### v-bind 指令将待办项传到循环输出的每个组件中
+###### 子单元通过 prop 接口与父单元进行良好的解耦
 
 ```html
 <!DOCTYPE html>
@@ -244,7 +256,7 @@ code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Comp
     ```
 * 子组件 -> 父组件传值
     ```
-    # $emit （发射/引发事件 + 参数） + v-on （监听事件，简写为@）
+    # v-on （监听事件，简写为@） + $emit （发射/引发事件 + 参数）
     ```
     ```html
     <!DOCTYPE html>
@@ -317,3 +329,19 @@ code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Comp
 
 ##### 总结
 至此，简单介绍了 Vue 核心最基本的功能。请详细阅读教程 https://cn.vuejs.org/v2/guide 的介绍部分。
+
+**A video tutorial**: https://scrimba.com/playlist/pXKqta
+
+###### 在一个大型应用中，有必要将整个应用程序划分为组件，以使开发更易管理。不过这里有一个 (假想的) 例子，以展示使用了组件的应用模板是什么样的：
+```html
+<div id="app">
+  <app-nav></app-nav>
+  <app-view>
+    <app-sidebar></app-sidebar>
+    <app-content></app-content>
+  </app-view>
+</div>
+```
+
+
+##### For advanced Contents, please see other notes.
