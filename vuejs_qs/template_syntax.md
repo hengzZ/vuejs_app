@@ -64,6 +64,6 @@ Using v-html directive: This should be red.
 
 ###### v- 前缀作为一种视觉提示，用来识别模板中 Vue 特定的特性。当你在使用 Vue.js 为现有标签（tag）添加动态行为 (dynamic behavior) 时，v- 前缀很有帮助。 ***(Html Website)***
 
-###### 但是，在构建由 Vue.js 管理所有模板的单页面应用程序 (SPA - single page application) 时，v- 前缀也变得没那么重要了。***(App)***
+###### 但是，在构建由 Vue.js 管理所有模板的单页面应用程序 (SPA - single page application) 时，v- 前缀也变得没那么重要了。 ***(App)***
 
 ###### 因此，Vue.js 为 v-bind 和 v-on 这两个最常用的指令，提供了特定简写。
