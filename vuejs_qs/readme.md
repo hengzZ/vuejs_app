@@ -343,5 +343,6 @@ code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Comp
 </div>
 ```
 
+##### 1. 核心知识: [knowledges](knowledges/)
+##### 2. For advanced contents, please see other notes: [advanced](advanced/)
 
-##### For advanced Contents, please see other notes.
