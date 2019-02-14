@@ -345,4 +345,4 @@ code link: [practices/TodoList_Vue_Component.html](./practices/TodoList_Vue_Comp
 
 ##### 1. 核心知识: [knowledges](knowledges/)
 ##### 2. For advanced contents, please see other notes: [advanced](advanced/)
-
+##### 3. Vue 单文件组件： [single-file components](https://cn.vuejs.org/v2/guide/single-file-components.html)
