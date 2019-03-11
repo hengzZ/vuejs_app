@@ -23,4 +23,12 @@ npm run dev
 
 #### Part II. 项目架构
 
+webpack 项目结构
 
+* index.html (首页)
+* main.js (入口)
+* App.vue (单文件根组件)
+* router (路由)
+* @/components （单文件子组件）
+
+以上为主线逻辑。
