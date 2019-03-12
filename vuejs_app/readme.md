@@ -41,4 +41,6 @@ API 请求
 axios 进行 ajax 请求，获取 json 数据
 Ajax 即 “Asynchronous Javascript And XML” （异步 JavaScript 和 XML）
 npm install axios --save
+
+可使用 webpack 的 dev server 代理机制从本地获取模拟 json 文件，进行前端开发！！
 ```
