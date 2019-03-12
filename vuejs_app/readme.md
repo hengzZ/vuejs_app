@@ -34,3 +34,11 @@ webpack 项目结构
 
 以上为主线逻辑。
 ```
+
+API 请求
+
+```html
+axios 进行 ajax 请求，获取 json 数据
+Ajax 即 “Asynchronous Javascript And XML” （异步 JavaScript 和 XML）
+npm install axios --save
+```
